@@ -10,18 +10,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install conventional-changelog-cli
+        run: npm install -g conventional-changelog-cli
 
       - name: Generate changelog
-        run: |
-          git fetch --prune --unshallow
-          npx auto-changelog -p
+        run: conventional-changelog -p angular -i CHANGELOG.md -s
 
-      - name: Commit changelog
+      - name: Commit and push changelog
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add changelog.md
+          git add CHANGELOG.md
           git commit -m "chore: update changelog"
           git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
