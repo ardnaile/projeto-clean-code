@@ -5,37 +5,37 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "estudantes")
 public class Estudante {
-  @Id private String id_estudante;
-  private String usuario_estudante;
-  private String chave_estudante;
-  private int qtd_acertos;
+  @Id private String idEstudante;
+  private String usuarioEstudante;
+  private String chaveEstudante;
+  private int qtdAcertos;
   private String turma;
 
   // builder pro dto!!
-  public Estudante(String turma, String usuario_estudante, String chave_estudante) {
-    this.usuario_estudante = usuario_estudante;
-    this.chave_estudante = chave_estudante;
+  public Estudante(String turma, String usuarioEstudante, String chaveEstudante) {
+    this.usuarioEstudante = usuarioEstudante;
+    this.chaveEstudante = chaveEstudante;
     this.turma = turma;
   }
 
-  public String getId_estudante() {
-    return id_estudante;
+  public String getIdEstudante() {
+    return idEstudante;
   }
 
-  public void setId_estudante(String id_estudante) {
-    this.id_estudante = id_estudante;
+  public void setIdEstudante(String idEstudante) {
+    this.idEstudante = idEstudante;
   }
 
-  public String getUsuario_estudante() {
-    return usuario_estudante;
+  public String getUsuarioEstudante() {
+    return usuarioEstudante;
   }
 
-  public void setUsuario_estudante(String usuario_estudante) {
-    this.usuario_estudante = usuario_estudante;
+  public void setUsuarioEstudante(String usuarioEstudante) {
+    this.usuarioEstudante = usuarioEstudante;
   }
 
-  public String getChave_estudante() {
-    return chave_estudante;
+  public String getChaveEstudante() {
+    return chaveEstudante;
   }
 
   public String getTurma() {
@@ -46,15 +46,15 @@ public class Estudante {
     this.turma = turma;
   }
 
-  public void setChave_estudante(String chave_estudante) {
-    this.chave_estudante = chave_estudante;
+  public void setChaveEstudante(String chaveEstudante) {
+    this.chaveEstudante = chaveEstudante;
   }
 
-  public int getQtd_acertos() {
-    return qtd_acertos;
+  public int getQtdAcertos() {
+    return qtdAcertos;
   }
 
-  public void setQtd_acertos(int qtd_acertos) {
-    this.qtd_acertos = qtd_acertos;
+  public void setQtdAcertos(int qtdAcertos) {
+    this.qtdAcertos = qtdAcertos;
   }
 }

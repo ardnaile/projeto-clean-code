@@ -30,7 +30,7 @@ public class EstudanteController {
 
       if (turma != null) {
         Estudante novoEstudante = estudanteService.salvarEstudante(estudante);
-        return ResponseEntity.ok(novoEstudante.getId_estudante());
+        return ResponseEntity.ok(novoEstudante.getIdEstudante());
       } else {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A turma informada não existe!");
       }
