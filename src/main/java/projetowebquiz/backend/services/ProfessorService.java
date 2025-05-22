@@ -19,7 +19,7 @@ public class ProfessorService {
   // Create
   public Professor salvarProfessor(Professor professor) throws Exception {
     Optional<Professor> existente =
-        professorRepository.findByUsuario(professor.getUsuarioProfessor());
+        professorRepository.findByUsuario(professor.getUsuario());
     if (existente.isPresent()) {
       throw new Exception("Usuário já existe.");
     }
@@ -49,7 +49,7 @@ public class ProfessorService {
             .findById(idProfessor)
             .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
     if (professor != null) {
-      return Collections.singletonList(professor.getUsuarioProfessor());
+      return Collections.singletonList(professor.getUsuario());
     } else {
       return null;
     }
@@ -59,7 +59,7 @@ public class ProfessorService {
     Optional<Professor> professor =
         professorRepository.findByUsuarioAndChaveProfessor(usuario, chave);
     if (professor.isPresent()) {
-      return String.valueOf(professor.get().getIdProfessor());
+      return String.valueOf(professor.get().getId());
     } else {
       throw new NoSuchElementException("Professor não encontrado.");
     }

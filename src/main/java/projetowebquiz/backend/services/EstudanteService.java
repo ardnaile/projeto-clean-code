@@ -29,7 +29,7 @@ public class EstudanteService {
   public String validarEstudante(String chave) {
     Optional<Estudante> estudante = estudanteRepository.findByChaveEstudante(chave);
     if (estudante.isPresent()) {
-      return String.valueOf(estudante.get().getIdEstudante());
+      return String.valueOf(estudante.get().getId());
     } else {
       throw new NoSuchElementException("Estudante não encontrado com a chave fornecida.");
     }

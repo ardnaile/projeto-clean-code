@@ -1,40 +1,36 @@
 package projetowebquiz.backend.models;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import projetowebquiz.backend.interfaces.Usuario;
 
 @Document(collection = "estudantes")
-public class Estudante {
-  @Id private String idEstudante;
+public class Estudante implements Usuario {
+  private ObjectId idEstudante;
   private String usuarioEstudante;
-  private String chaveEstudante;
-  private int qtdAcertos;
+  private String senhaEstudante;
   private String turma;
 
-  public Estudante(String turma, String usuarioEstudante, String chaveEstudante) {
-    this.usuarioEstudante = usuarioEstudante;
-    this.chaveEstudante = chaveEstudante;
-    this.turma = turma;
+  public Estudante(String usuarioEstudante, String senhaEstudante, String turma) {
+      this.usuarioEstudante = usuarioEstudante;
+      this.senhaEstudante = senhaEstudante;
+      this.turma = turma;
   }
 
-  public String getIdEstudante() {
+  @Override
+  public ObjectId getId(){
     return idEstudante;
   }
 
-  public void setIdEstudante(String idEstudante) {
-    this.idEstudante = idEstudante;
-  }
-
-  public String getUsuarioEstudante() {
+  @Override
+  public String getUsuario(){
     return usuarioEstudante;
   }
 
-  public void setUsuarioEstudante(String usuarioEstudante) {
-    this.usuarioEstudante = usuarioEstudante;
-  }
-
-  public String getChaveEstudante() {
-    return chaveEstudante;
+  @Override
+  public String getSenha(){
+    return senhaEstudante;
   }
 
   public String getTurma() {
@@ -43,17 +39,5 @@ public class Estudante {
 
   public void setTurma(String turma) {
     this.turma = turma;
-  }
-
-  public void setChaveEstudante(String chaveEstudante) {
-    this.chaveEstudante = chaveEstudante;
-  }
-
-  public int getQtdAcertos() {
-    return qtdAcertos;
-  }
-
-  public void setQtdAcertos(int qtdAcertos) {
-    this.qtdAcertos = qtdAcertos;
   }
 }
