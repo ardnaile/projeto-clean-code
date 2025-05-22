@@ -30,4 +30,4 @@ jobs:
           git add CHANGELOG.md
           git diff --quiet && exit 0  
           git commit -m "chore(release): update changelog [skip ci]"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main
+          git push
