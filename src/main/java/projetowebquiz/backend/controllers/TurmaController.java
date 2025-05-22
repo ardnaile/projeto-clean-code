@@ -17,7 +17,7 @@ public class TurmaController {
   @Autowired TurmaMapper turmaMapper;
   @Autowired TurmaService turmaService;
 
-  @PostMapping("/novaTurma")
+  @PostMapping
   public ResponseEntity<String> novaTurma(@RequestBody TurmaDto turmaDto) {
     try {
       Turma turma = turmaMapper.toEntity(turmaDto);
@@ -30,13 +30,13 @@ public class TurmaController {
     }
   }
 
-  @GetMapping("/verTodasTurmas")
+  @GetMapping
   public ResponseEntity<List<Turma>> verTodasTurmas() {
     List<Turma> lista = turmaService.verTodasTurmas();
     return ResponseEntity.ok(lista);
   }
 
-  @GetMapping("/verAlunosDaTurma/{nomeTurma}")
+  @GetMapping("/{nomeTurma}/alunos")
   public ResponseEntity<List<Estudante>> verAlunosDaTurma(@PathVariable String nomeTurma) {
     List<Estudante> lista = turmaService.verAlunosDaTurma(nomeTurma);
     return ResponseEntity.ok(lista);
