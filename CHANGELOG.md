@@ -1,2 +1,2 @@
 ## Changelog
-* chore: update changelog.yml (ardnaile)
+* chore: run spotless (ardnaile)
