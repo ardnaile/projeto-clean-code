@@ -6,6 +6,8 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import projetowebquiz.backend.dtos.ProfessorDto;
+import projetowebquiz.backend.mappers.ProfessorMapper;
 import projetowebquiz.backend.models.Professor;
 import projetowebquiz.backend.models.Turma;
 import projetowebquiz.backend.repositories.ProfessorRepository;
@@ -15,18 +17,20 @@ import projetowebquiz.backend.repositories.TurmaRepository;
 public class ProfessorService {
   @Autowired private ProfessorRepository professorRepository;
   @Autowired private TurmaRepository turmaRepository;
+  @Autowired private ProfessorMapper professorMapper;
 
-  // Create
-  public Professor salvarProfessor(Professor professor) throws Exception {
+  public String cadastrarProfessor(ProfessorDto professorDto) {
+    Professor professor = professorMapper.toEntity(professorDto);
+
     Optional<Professor> existente =
-        professorRepository.findByUsuario(professor.getUsuario());
-    if (existente.isPresent()) {
-      throw new Exception("Usuário já existe.");
+            professorRepository.findByUsuario(professor.getUsuario());
+    if (existente.isPresent()){
+      throw new IllegalArgumentException("Usuário já existe.");
     }
-    return professorRepository.save(professor);
+    professorRepository.save(professor);
+  return professor.getId().toString();
   }
 
-  // Read
   public List<Professor> verTodosProfessores() {
     return professorRepository.findAll();
   }
@@ -36,8 +40,6 @@ public class ProfessorService {
         .findById(id)
         .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
   }
-
-  // Buscar turmas relacionadas a esse professor
 
   public List<Turma> buscarTurmasPorProfessor(String idProfessor) {
     return turmaRepository.findByProfessor(idProfessor);

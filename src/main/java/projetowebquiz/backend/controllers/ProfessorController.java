@@ -22,20 +22,8 @@ public class ProfessorController {
 
   @PostMapping
   public ResponseEntity<String> cadastrarProfessor(@RequestBody ProfessorDto professorDto) {
-    try {
-      Professor professor = professorMapper.toEntity(professorDto);
-      Professor novoProfessor = professorService.salvarProfessor(professor);
-
-      return ResponseEntity.ok(
-          "Professor cadastrado com sucesso. ID: " + novoProfessor.getId());
-    } catch (Exception e) {
-      if (e.getMessage().equals("Usuário já existe.")) {
-        return ResponseEntity.status(HttpStatus.CONFLICT)
-            .body("Erro ao cadastrar professor: usuário já existe");
-      }
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body("Erro ao cadastrar professor: " + e.getMessage());
-    }
+    String id = professorService.cadastrarProfessor(professorDto);
+    return ResponseEntity.ok(id);
   }
 
   @GetMapping
