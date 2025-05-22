@@ -13,20 +13,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install conventional-changelog
-        run: npm install -g conventional-changelog-cli
-
-      - name: Generate CHANGELOG.md
+      - name: Generate ChangeLog
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
-          conventional-changelog -p angular -i CHANGELOG.md -s
+          echo "## Changelog" > CHANGELOG.md
+          git log --pretty=format:"* %s (%an)" >> CHANGELOG.md
 
           git add CHANGELOG.md
           git commit -m "chore(release): update changelog" || echo "No changes to commit"
