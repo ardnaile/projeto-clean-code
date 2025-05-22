@@ -5,28 +5,27 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "questoes_duas")
 public class QuestaoDuas {
-  @Id private String id_questao_duas;
+  @Id private String idQuestaoDuas;
 
   private String enunciado;
   private int resposta;
   private String dica;
-  private int id_categoria;
+  private int idCategoria;
 
-  public QuestaoDuas(
-      String id_questao_duas, String enunciado, int resposta, String dica, int id_categoria) {
-    this.id_questao_duas = id_questao_duas;
+  public QuestaoDuas(String idQuestaoDuas, String enunciado, int resposta, String dica, int idCategoria) {
+    this.idQuestaoDuas = idQuestaoDuas;
     this.enunciado = enunciado;
     this.resposta = resposta;
     this.dica = dica;
-    this.id_categoria = id_categoria;
+    this.idCategoria = idCategoria;
   }
 
-  public String getId_questao_duas() {
-    return id_questao_duas;
+  public String getIdQuestaoDuas() {
+    return idQuestaoDuas;
   }
 
-  public void setId_questao_duas(String id_questao_duas) {
-    this.id_questao_duas = id_questao_duas;
+  public void setIdQuestaoDuas(String idQuestaoDuas) {
+    this.idQuestaoDuas = idQuestaoDuas;
   }
 
   public String getEnunciado() {
@@ -53,11 +52,11 @@ public class QuestaoDuas {
     this.dica = dica;
   }
 
-  public int getId_categoria() {
-    return id_categoria;
+  public int getIdCategoria() {
+    return idCategoria;
   }
 
-  public void setId_categoria(int id_categoria) {
-    this.id_categoria = id_categoria;
+  public void setIdCategoria(int idCategoria) {
+    this.idCategoria = idCategoria;
   }
 }
