@@ -15,10 +15,12 @@ jobs:
 
       - name: Generate ChangeLog
         run: |
-          npm install --save-dev standard-version
-          npx standard-version
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+
+          echo "## Changelog" > CHANGELOG.md
+          git log --pretty=format:"* %s (%an)" >> CHANGELOG.md
+
           git add CHANGELOG.md
-          git commit -m "chore: update changelog"
+          git commit -m "chore(release): update changelog" || echo "No changes to commit"
           git push
