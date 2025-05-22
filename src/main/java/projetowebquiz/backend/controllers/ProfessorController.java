@@ -13,6 +13,7 @@ import projetowebquiz.backend.models.Turma;
 import projetowebquiz.backend.services.ProfessorService;
 
 @RestController
+@RequestMapping("/professor")
 public class ProfessorController {
 
   @Autowired private ProfessorMapper professorMapper;
