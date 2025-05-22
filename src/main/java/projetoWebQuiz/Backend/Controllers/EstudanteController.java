@@ -22,7 +22,6 @@ import java.util.Optional;
 @RestController
 @RequestMapping
 public class EstudanteController {
-    // comentário teste
     @Autowired
     EstudanteService estudanteService;
 
@@ -40,7 +39,7 @@ public class EstudanteController {
 
             if (turma != null){
                 Estudante novoEstudante = estudanteService.salvarEstudante(estudante);
-                return ResponseEntity.ok(novoEstudante.getId_estudante());//"Estudante cadastrado com sucesso. ID: " +
+                return ResponseEntity.ok(novoEstudante.getId_estudante());
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("A turma informada não existe!");
             }
