@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import projetowebquiz.backend.dtos.EstudanteDto;
 import projetowebquiz.backend.mappers.EstudanteMapper;
 import projetowebquiz.backend.models.Estudante;
-import projetowebquiz.backend.models.Turma;
 import projetowebquiz.backend.repositories.TurmaRepository;
 import projetowebquiz.backend.services.EstudanteService;
 
@@ -29,21 +28,14 @@ public class EstudanteController {
   }
 
   @GetMapping
-  public ResponseEntity<List<Estudante>> verTodosEstudantes() {
-    List<Estudante> lista = estudanteService.verTodosEstudantes();
-    return ResponseEntity.ok(lista);
+  public ResponseEntity<List<Estudante>> exibirEstudantes() {
+    List<Estudante> lista = estudanteService.exibirEstudantes();
+    return ResponseEntity.status(HttpStatus.OK).body(lista);
   }
 
   @PostMapping("/validar")
-  public ResponseEntity<String> validarEstudante(@RequestParam String chave) {
-    try {
-      String estudanteId = estudanteService.validarEstudante(chave);
-      return ResponseEntity.ok(estudanteId);
-    } catch (NoSuchElementException e) {
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body("Erro interno do servidor.");
-    }
+  public ResponseEntity<String> validarEstudante(@RequestParam String senha) {
+    String estudanteId = estudanteService.validarEstudante(senha);
+    return ResponseEntity.ok(estudanteId);
   }
 }

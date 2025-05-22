@@ -11,6 +11,6 @@ public interface EstudanteRepository extends MongoRepository<Estudante, String> 
   @Query("{ 'turma': ?0 }")
   List<Estudante> findByNomeTurma(String turma);
 
-  @Query("{ 'chaveEstudante': ?0}")
-  Optional<Estudante> findByChaveEstudante(String chaveEstudante);
+  @Query("{ 'senhaEstudante': ?0}")
+  Optional<Estudante> findBySenhaEstudante(String senhaEstudante);
 }
