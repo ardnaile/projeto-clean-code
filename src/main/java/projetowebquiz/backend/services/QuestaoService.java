@@ -44,19 +44,19 @@ public class QuestaoService {
     return questaoQuatroDto;
   }
 
-  public QuestaoDuasDto pegarQuestaoDuas(int id_categoria) {
-    List<QuestaoDuas> questoesDuas = questaoDuasRepository.findByIdCategoria(id_categoria);
+  public QuestaoDuasDto pegarQuestaoDuas(int idCategoria) {
+    List<QuestaoDuas> questoesDuas = questaoDuasRepository.findByIdCategoria(idCategoria);
     Collections.shuffle(questoesDuas);
 
     QuestaoDuasDto questaoDuasDto = questaoDuasMapper.toDto(questoesDuas.get(0));
     return questaoDuasDto;
   }
 
-  public Object pegarQuestaoAleatoria(int id_categoria) {
+  public Object pegarQuestaoAleatoria(int idCategoria) {
     if (random.nextBoolean()) {
-      return pegarQuestaoQuatro(id_categoria);
+      return pegarQuestaoQuatro(idCategoria);
     } else {
-      return pegarQuestaoDuas(id_categoria);
+      return pegarQuestaoDuas(idCategoria);
     }
   }
 }
