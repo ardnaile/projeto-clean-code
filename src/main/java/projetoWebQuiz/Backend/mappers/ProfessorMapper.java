@@ -9,7 +9,7 @@ public class ProfessorMapper {
 
   public Professor toEntity(ProfessorDto professorDto) {
     Professor objeto =
-        new Professor(professorDto.usuario_professor(), professorDto.chave_professor());
+        new Professor(professorDto.usuarioProfessor(), professorDto.chaveProfessor());
     return objeto;
   }
 }

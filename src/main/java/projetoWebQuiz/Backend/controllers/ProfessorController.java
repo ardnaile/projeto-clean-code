@@ -67,7 +67,7 @@ public class ProfessorController {
     try {
       String professorId =
           professorService.validarProfessor(
-              professorDto.usuario_professor(), professorDto.chave_professor());
+              professorDto.usuarioProfessor(), professorDto.chaveProfessor());
       return ResponseEntity.ok(professorId);
     } catch (NoSuchElementException e) {
       return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());

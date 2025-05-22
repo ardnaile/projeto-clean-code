@@ -8,13 +8,13 @@ import projetoWebQuiz.Backend.models.Professor;
 public interface ProfessorRepository extends MongoRepository<Professor, String> {
   // aqui podemos adicionar os métodos de consulta (query)
 
-  @Query("{ 'usuario_professor': ?0 }")
+  @Query("{ 'usuarioProfessor': ?0 }")
   Optional<Professor> findByUsuario(String usuario_professor);
 
-  @Query("{ 'chave_professor': ?0 }")
+  @Query("{ 'chaveProfessor': ?0 }")
   Optional<Professor> findByChave(String chave_professor);
 
-  @Query("{ 'usuario_professor': ?0, 'chave_professor': ?1 }")
+  @Query("{ 'usuarioProfessor': ?0, 'chaveProfessor': ?1 }")
   Optional<Professor> findByUsuarioAndChaveProfessor(
       String usuarioProfessor, String chaveProfessor);
 }
