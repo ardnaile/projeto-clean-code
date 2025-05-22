@@ -8,12 +8,12 @@ import projetoWebQuiz.Backend.models.QuestaoQuatro;
 
 @Component
 public class QuestaoMapper {
-  public QuestaoDuasDto toDTO(QuestaoDuas questaoDuas) {
+  public QuestaoDuasDto toDto(QuestaoDuas questaoDuas) {
     return new QuestaoDuasDto(
         questaoDuas.getEnunciado(), questaoDuas.getResposta(), questaoDuas.getDica());
   }
 
-  public QuestaoQuatroDto toDTO(QuestaoQuatro questaoQuatro) {
+  public QuestaoQuatroDto toDto(QuestaoQuatro questaoQuatro) {
     return new QuestaoQuatroDto(
         questaoQuatro.getEnunciado(),
         questaoQuatro.getResposta(),
