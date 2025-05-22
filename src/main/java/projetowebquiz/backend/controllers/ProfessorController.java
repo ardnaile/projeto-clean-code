@@ -16,8 +16,6 @@ import projetowebquiz.backend.services.ProfessorService;
 @RestController
 public class ProfessorController {
 
-  @Autowired private ProfessorRepository professorRepository;
-
   @Autowired private ProfessorMapper professorMapper;
 
   @Autowired private ProfessorService professorService;

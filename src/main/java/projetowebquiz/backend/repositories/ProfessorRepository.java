@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.repository.Query;
 import projetowebquiz.backend.models.Professor;
 
 public interface ProfessorRepository extends MongoRepository<Professor, String> {
-  // aqui podemos adicionar os métodos de consulta (query)
 
   @Query("{ 'usuarioProfessor': ?0 }")
   Optional<Professor> findByUsuario(String usuarioProfessor);
