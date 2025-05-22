@@ -9,10 +9,10 @@ public interface ProfessorRepository extends MongoRepository<Professor, String> 
   // aqui podemos adicionar os métodos de consulta (query)
 
   @Query("{ 'usuarioProfessor': ?0 }")
-  Optional<Professor> findByUsuario(String usuario_professor);
+  Optional<Professor> findByUsuario(String usuarioProfessor);
 
   @Query("{ 'chaveProfessor': ?0 }")
-  Optional<Professor> findByChave(String chave_professor);
+  Optional<Professor> findByChave(String chaveProfessor);
 
   @Query("{ 'usuarioProfessor': ?0, 'chaveProfessor': ?1 }")
   Optional<Professor> findByUsuarioAndChaveProfessor(
