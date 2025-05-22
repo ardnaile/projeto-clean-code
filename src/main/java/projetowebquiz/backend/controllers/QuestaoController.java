@@ -15,13 +15,13 @@ import projetowebquiz.backend.repositories.QuestaoDuasRepository;
 import projetowebquiz.backend.services.QuestaoService;
 
 @RestController
-@RequestMapping("/questao")
+@RequestMapping("/questoes")
 public class QuestaoController {
   @Autowired private QuestaoDuasRepository questaoDuasRepository;
 
   @Autowired private QuestaoService questaoService;
 
-  @GetMapping("/questaoQuatro/{idCategoria}")
+  @GetMapping("/quatro/{idCategoria}")
   public ResponseEntity<QuestaoQuatroDto> pegarQuestaoQuatro(@PathVariable int idCategoria) {
     try {
       QuestaoQuatroDto questaoQuatroDto = questaoService.pegarQuestaoQuatro(idCategoria);
@@ -35,7 +35,7 @@ public class QuestaoController {
     }
   }
 
-  @GetMapping("/questaoDuas/{idCategoria}")
+  @GetMapping("/duas/{idCategoria}")
   public ResponseEntity<QuestaoDuasDto> pegarQuestaoDuas(@PathVariable int idCategoria) {
     try {
       QuestaoDuasDto questaoDuasDto = questaoService.pegarQuestaoDuas(idCategoria);
@@ -49,13 +49,13 @@ public class QuestaoController {
     }
   }
 
-  @GetMapping("/verTodasQuestoesDuas")
+  @GetMapping("/duas")
   public ResponseEntity<List<QuestaoDuas>> questoesDuas() {
     List<QuestaoDuas> lista = questaoDuasRepository.findAll();
     return ResponseEntity.ok(lista);
   }
 
-  @GetMapping("/questaoAleatoria/{idCategoria}")
+  @GetMapping("/aleatoria/{idCategoria}")
   public ResponseEntity<Object> pegarQuestaoAleatoria(@PathVariable int idCategoria) {
     try {
       Object questao = questaoService.pegarQuestaoAleatoria(idCategoria);
