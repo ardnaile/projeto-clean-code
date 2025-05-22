@@ -11,7 +11,6 @@ public class Estudante {
   private int qtdAcertos;
   private String turma;
 
-  // builder pro dto!!
   public Estudante(String turma, String usuarioEstudante, String chaveEstudante) {
     this.usuarioEstudante = usuarioEstudante;
     this.chaveEstudante = chaveEstudante;
