@@ -7,6 +7,6 @@ import projetowebquiz.backend.models.QuestaoQuatro;
 
 public interface QuestaoQuatroRepository extends MongoRepository<QuestaoQuatro, String> {
 
-  @Query("{ 'id_categoria': ?0 }")
-  List<QuestaoQuatro> findByIdCategoria(int id_categoria);
+  @Query("{ 'idCategoria': ?0 }")
+  List<QuestaoQuatro> findByIdCategoria(int idCategoria);
 }
