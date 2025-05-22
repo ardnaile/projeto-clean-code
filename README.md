@@ -71,7 +71,7 @@ Além disso, será feita uma reestruturação na modelagem. Por exemplo: no cód
 Algumas dessas mudanças impactarão também em como os dados serão guardados no banco, exigindo a adaptação dos documentos armazenados para refletir as atualizações que seguirão de forma mais coerente o paradigma de orientação a objetos.
 
 ## ChangeLog
-Mais informações conforme andamento do projeto!
+O arquivo [CHANGELOG.md](https://github.com/ardnaile/projeto-clean-code/blob/main/CHANGELOG.md) contém as mudanças que foram feitas no código original.
 
 ## Testes implementados
 Mais informações conforme andamento do projeto!
