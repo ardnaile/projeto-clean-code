@@ -17,10 +17,6 @@ import projetowebquiz.backend.services.EstudanteService;
 public class EstudanteController {
   @Autowired EstudanteService estudanteService;
 
-  @Autowired EstudanteMapper estudanteMapper;
-
-  @Autowired TurmaRepository turmaRepository;
-
   @PostMapping
   public ResponseEntity<String> cadastroEstudante(@RequestBody EstudanteDto estudanteDto) {
     String id = estudanteService.cadastroEstudante(estudanteDto);
