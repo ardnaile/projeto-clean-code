@@ -7,27 +7,27 @@ on:
 
 jobs:
   changelog:
-    if: github.actor != 'github-actions'  # Evita loop
-    runs-on: ubuntu-latest  # Ambiente Ubuntu
+    if: github.actor != 'github-actions'
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3  # Clona o repositório
+      - uses: actions/checkout@v3
 
-      - uses: actions/setup-node@v3  # Instala Node.js
+      - uses: actions/setup-node@v3
         with:
           node-version: '18'
 
-      - run: npm install --save-dev standard-version  # Instala o standard-version
-
-      - run: npx standard-version --skip.tag=true --skip.bump=true  # Gera CHANGELOG.md
+      - run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com" 
+          npm install --save-dev standard-version
+          npx standard-version --skip.tag=true --skip.bump=true
 
       - name: Commit and push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git diff --quiet && exit 0  
           git add CHANGELOG.md
+          git diff --quiet && exit 0  
           git commit -m "chore(release): update changelog [skip ci]"
           git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} HEAD:main
