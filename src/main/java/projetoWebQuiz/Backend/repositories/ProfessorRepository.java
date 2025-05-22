@@ -1,0 +1,20 @@
+package projetoWebQuiz.Backend.repositories;
+
+import java.util.Optional;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.Query;
+import projetoWebQuiz.Backend.models.Professor;
+
+public interface ProfessorRepository extends MongoRepository<Professor, String> {
+  // aqui podemos adicionar os métodos de consulta (query)
+
+  @Query("{ 'usuario_professor': ?0 }")
+  Optional<Professor> findByUsuario(String usuario_professor);
+
+  @Query("{ 'chave_professor': ?0 }")
+  Optional<Professor> findByChave(String chave_professor);
+
+  @Query("{ 'usuario_professor': ?0, 'chave_professor': ?1 }")
+  Optional<Professor> findByUsuarioAndChaveProfessor(
+      String usuarioProfessor, String chaveProfessor);
+}

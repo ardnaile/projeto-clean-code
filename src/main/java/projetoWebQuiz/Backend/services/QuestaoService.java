@@ -1,0 +1,62 @@
+package projetoWebQuiz.Backend.services;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import projetoWebQuiz.Backend.dtos.QuestaoDuasDto;
+import projetoWebQuiz.Backend.dtos.QuestaoQuatroDto;
+import projetoWebQuiz.Backend.mappers.QuestaoDuasMapper;
+import projetoWebQuiz.Backend.mappers.QuestaoQuatroMapper;
+import projetoWebQuiz.Backend.models.QuestaoDuas;
+import projetoWebQuiz.Backend.models.QuestaoQuatro;
+import projetoWebQuiz.Backend.repositories.QuestaoDuasRepository;
+import projetoWebQuiz.Backend.repositories.QuestaoQuatroRepository;
+
+@Service
+public class QuestaoService {
+
+  @Autowired private QuestaoQuatroRepository questaoQuatroRepository;
+
+  @Autowired private QuestaoQuatroMapper questaoQuatroMapper;
+
+  @Autowired private QuestaoDuasRepository questaoDuasRepository;
+
+  @Autowired private QuestaoDuasMapper questaoDuasMapper;
+
+  private final Random random = new Random();
+
+  public QuestaoQuatroDto pegarQuestaoQuatro(int id_categoria) {
+    // Pegando uma lista com todas as questões do banco e embaralhando
+    List<QuestaoQuatro> questoesQuatro = questaoQuatroRepository.findByIdCategoria(id_categoria);
+    Collections.shuffle(questoesQuatro);
+
+    // Pegando a primeira da lista e transformando em dto
+    QuestaoQuatroDto questaoQuatroDto = questaoQuatroMapper.toDTO(questoesQuatro.get(0));
+
+    // Setando os valores das outras opções (opções erradas)
+    questaoQuatroDto.setOpcao2(questoesQuatro.get(1).getResposta());
+    questaoQuatroDto.setOpcao3(questoesQuatro.get(2).getResposta());
+    questaoQuatroDto.setOpcao4(questoesQuatro.get(3).getResposta());
+
+    // retornando o json com todas as infos necessárias
+    return questaoQuatroDto;
+  }
+
+  public QuestaoDuasDto pegarQuestaoDuas(int id_categoria) {
+    List<QuestaoDuas> questoesDuas = questaoDuasRepository.findByIdCategoria(id_categoria);
+    Collections.shuffle(questoesDuas);
+
+    QuestaoDuasDto questaoDuasDto = questaoDuasMapper.toDTO(questoesDuas.get(0));
+    return questaoDuasDto;
+  }
+
+  public Object pegarQuestaoAleatoria(int id_categoria) {
+    if (random.nextBoolean()) {
+      return pegarQuestaoQuatro(id_categoria);
+    } else {
+      return pegarQuestaoDuas(id_categoria);
+    }
+  }
+}
