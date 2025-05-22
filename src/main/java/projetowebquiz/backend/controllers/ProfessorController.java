@@ -10,7 +10,6 @@ import projetowebquiz.backend.dtos.ProfessorDto;
 import projetowebquiz.backend.mappers.ProfessorMapper;
 import projetowebquiz.backend.models.Professor;
 import projetowebquiz.backend.models.Turma;
-import projetowebquiz.backend.repositories.ProfessorRepository;
 import projetowebquiz.backend.services.ProfessorService;
 
 @RestController
