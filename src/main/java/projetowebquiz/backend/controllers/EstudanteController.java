@@ -14,7 +14,7 @@ import projetowebquiz.backend.repositories.TurmaRepository;
 import projetowebquiz.backend.services.EstudanteService;
 
 @RestController
-@RequestMapping
+@RequestMapping("estudantes")
 public class EstudanteController {
   @Autowired EstudanteService estudanteService;
 
@@ -22,7 +22,7 @@ public class EstudanteController {
 
   @Autowired TurmaRepository turmaRepository;
 
-  @PostMapping("/cadastroEstudante")
+  @PostMapping
   public ResponseEntity<String> cadastroEstudante(@RequestBody EstudanteDto estudanteDto) {
     try {
       Estudante estudante = estudanteMapper.toEntity(estudanteDto);
@@ -40,13 +40,13 @@ public class EstudanteController {
     }
   }
 
-  @GetMapping("/verTodosEstudantes")
+  @GetMapping
   public ResponseEntity<List<Estudante>> verTodosEstudantes() {
     List<Estudante> lista = estudanteService.verTodosEstudantes();
     return ResponseEntity.ok(lista);
   }
 
-  @PostMapping("/validarEstudante")
+  @PostMapping("/validar")
   public ResponseEntity<String> validarEstudante(@RequestParam String chave) {
     try {
       String estudanteId = estudanteService.validarEstudante(chave);
