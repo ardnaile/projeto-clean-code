@@ -3,21 +3,21 @@ package projetoWebQuiz.Backend.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "questoes_quatro")
+@Document(collection = "questoesQuatro")
 public class QuestaoQuatro {
-  @Id private String id_questao_quatro;
+  @Id private String idQuestaoQuatro;
 
   private String enunciado;
   private String resposta;
   private String dica;
-  private int id_categoria;
+  private int idCategoria;
 
   public String getId() {
-    return id_questao_quatro;
+    return idQuestaoQuatro;
   }
 
-  public void setId(String id_questao_quatro) {
-    this.id_questao_quatro = id_questao_quatro;
+  public void setId(String idQuestaoQuatro) {
+    this.idQuestaoQuatro = idQuestaoQuatro;
   }
 
   public String getEnunciado() {
@@ -44,11 +44,11 @@ public class QuestaoQuatro {
     this.dica = dica;
   }
 
-  public int getId_categoria() {
-    return id_categoria;
+  public int getIdCategoria() {
+    return idCategoria;
   }
 
-  public void setId_categoria(int id_categoria) {
-    this.id_categoria = id_categoria;
+  public void setIdCategoria(int idCategoria) {
+    this.idCategoria = idCategoria;
   }
 }
