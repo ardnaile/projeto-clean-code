@@ -7,8 +7,8 @@ import projetowebquiz.backend.models.Turma;
 
 public interface TurmaRepository extends MongoRepository<Turma, String> {
   @Query("{ 'nomeTurma': ?0 }")
-  Turma findByNomeTurma(String nome_turma);
+  Turma findByNomeTurma(String nomeTurma);
 
   @Query("{ 'idProfessor': ?0 }")
-  List<Turma> findByProfessor(String id_professor);
+  List<Turma> findByProfessor(String idProfessor);
 }
