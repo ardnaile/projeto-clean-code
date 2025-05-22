@@ -18,7 +18,6 @@ public class QuestaoQuatroDto {
     this.opcao4 = opcao4;
   }
 
-  // Getters e setters
   public String getEnunciado() {
     return enunciado;
   }
