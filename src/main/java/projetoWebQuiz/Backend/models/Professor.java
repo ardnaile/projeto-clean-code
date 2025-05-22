@@ -5,37 +5,37 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "professores")
 public class Professor {
-  @Id private String id_professor;
+  @Id private String idProfessor;
 
-  private String usuario_professor;
-  private String chave_professor;
+  private String usuarioProfessor;
+  private String chaveProfessor;
 
-  public Professor(String usuario_professor, String chave_professor) {
-    this.usuario_professor = usuario_professor;
-    this.chave_professor = chave_professor;
+  public Professor(String usuarioProfessor, String chaveProfessor) {
+    this.usuarioProfessor = usuarioProfessor;
+    this.chaveProfessor = chaveProfessor;
   }
 
-  public String getId_professor() {
-    return id_professor;
+  public String getIdProfessor() {
+    return idProfessor;
   }
 
-  public void setId_professor(String id_professor) {
-    this.id_professor = id_professor;
+  public void setIdProfessor(String idProfessor) {
+    this.idProfessor = idProfessor;
   }
 
-  public String getUsuario_professor() {
-    return usuario_professor;
+  public String getUsuarioProfessor() {
+    return usuarioProfessor;
   }
 
-  public void setUsuario_professor(String usuario_professor) {
-    this.usuario_professor = usuario_professor;
+  public void setUsuarioProfessor(String usuarioProfessor) {
+    this.usuarioProfessor = usuarioProfessor;
   }
 
-  public String getChave_professor() {
-    return chave_professor;
+  public String getChaveProfessor() {
+    return chaveProfessor;
   }
 
-  public void setChave_professor(String chave_professor) {
-    this.chave_professor = chave_professor;
+  public void setChaveProfessor(String chaveProfessor) {
+    this.chaveProfessor = chaveProfessor;
   }
 }

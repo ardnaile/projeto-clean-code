@@ -29,7 +29,7 @@ public class ProfessorController {
       Professor novoProfessor = professorService.salvarProfessor(professor);
 
       return ResponseEntity.ok(
-          "Professor cadastrado com sucesso. ID: " + novoProfessor.getId_professor());
+          "Professor cadastrado com sucesso. ID: " + novoProfessor.getIdProfessor());
     } catch (Exception e) {
       if (e.getMessage().equals("Usuário já existe.")) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
