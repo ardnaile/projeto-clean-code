@@ -12,7 +12,8 @@ public class QuestaoDuas {
   private String dica;
   private int idCategoria;
 
-  public QuestaoDuas(String idQuestaoDuas, String enunciado, int resposta, String dica, int idCategoria) {
+  public QuestaoDuas(
+      String idQuestaoDuas, String enunciado, int resposta, String dica, int idCategoria) {
     this.idQuestaoDuas = idQuestaoDuas;
     this.enunciado = enunciado;
     this.resposta = resposta;
