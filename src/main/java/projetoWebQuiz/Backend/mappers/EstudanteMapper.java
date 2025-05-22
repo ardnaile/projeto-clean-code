@@ -10,7 +10,7 @@ public class EstudanteMapper {
   public Estudante toEntity(EstudanteDto estudanteDto) {
     Estudante objeto =
         new Estudante(
-            estudanteDto.turma(), estudanteDto.usuario_estudante(), estudanteDto.chave_estudante());
+            estudanteDto.turma(), estudanteDto.usuarioEstudante(), estudanteDto.chaveEstudante());
     return objeto;
   }
 }
