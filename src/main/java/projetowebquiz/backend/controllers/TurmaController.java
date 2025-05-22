@@ -11,7 +11,7 @@ import projetowebquiz.backend.models.Estudante;
 import projetowebquiz.backend.models.Turma;
 import projetowebquiz.backend.services.TurmaService;
 
-@RestController
+@RestController("/turma")
 public class TurmaController {
   @Autowired TurmaMapper turmaMapper;
   @Autowired TurmaService turmaService;
