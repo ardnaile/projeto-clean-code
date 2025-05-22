@@ -7,6 +7,6 @@ import projetowebquiz.backend.models.QuestaoDuas;
 
 public interface QuestaoDuasRepository extends MongoRepository<QuestaoDuas, String> {
 
-  @Query("{ 'id_categoria': ?0 }")
-  List<QuestaoDuas> findByIdCategoria(int id_categoria);
+  @Query("{ 'idCategoria': ?0 }")
+  List<QuestaoDuas> findByIdCategoria(int idCategoria);
 }
