@@ -15,7 +15,7 @@ import projetowebquiz.backend.repositories.QuestaoDuasRepository;
 import projetowebquiz.backend.services.QuestaoService;
 
 @RestController
-@RequestMapping
+@RequestMapping("/questao")
 public class QuestaoController {
   @Autowired private QuestaoDuasRepository questaoDuasRepository;
 
