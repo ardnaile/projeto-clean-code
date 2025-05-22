@@ -9,7 +9,7 @@ public class QuestaoQuatroMapper {
 
   // quando inicializa o dto por meio da conversão, as opcoes são nulas
 
-  public QuestaoQuatroDto toDTO(QuestaoQuatro questaoQuatro) {
+  public QuestaoQuatroDto toDto(QuestaoQuatro questaoQuatro) {
     return new QuestaoQuatroDto(
         questaoQuatro.getEnunciado(),
         questaoQuatro.getResposta(),

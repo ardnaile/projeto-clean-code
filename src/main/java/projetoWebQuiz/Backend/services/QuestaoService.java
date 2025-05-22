@@ -33,7 +33,7 @@ public class QuestaoService {
     Collections.shuffle(questoesQuatro);
 
     // Pegando a primeira da lista e transformando em dto
-    QuestaoQuatroDto questaoQuatroDto = questaoQuatroMapper.toDTO(questoesQuatro.get(0));
+    QuestaoQuatroDto questaoQuatroDto = questaoQuatroMapper.toDto(questoesQuatro.get(0));
 
     // Setando os valores das outras opções (opções erradas)
     questaoQuatroDto.setOpcao2(questoesQuatro.get(1).getResposta());
