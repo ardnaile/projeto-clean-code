@@ -7,7 +7,7 @@ import projetoWebQuiz.Backend.models.QuestaoDuas;
 @Component
 public class QuestaoDuasMapper {
 
-  public QuestaoDuasDto toDTO(QuestaoDuas questaoDuas) {
+  public QuestaoDuasDto toDto(QuestaoDuas questaoDuas) {
     return new QuestaoDuasDto(
         questaoDuas.getEnunciado(), questaoDuas.getResposta(), questaoDuas.getDica());
   }
