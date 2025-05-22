@@ -6,9 +6,9 @@ import org.springframework.data.mongodb.repository.Query;
 import projetoWebQuiz.Backend.models.Turma;
 
 public interface TurmaRepository extends MongoRepository<Turma, String> {
-  @Query("{ 'nome_turma': ?0 }")
+  @Query("{ 'nomeTurma': ?0 }")
   Turma findByNomeTurma(String nome_turma);
 
-  @Query("{ 'id_professor': ?0 }")
+  @Query("{ 'idProfessor': ?0 }")
   List<Turma> findByProfessor(String id_professor);
 }

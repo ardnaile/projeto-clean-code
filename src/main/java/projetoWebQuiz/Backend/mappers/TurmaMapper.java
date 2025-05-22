@@ -8,7 +8,7 @@ import projetoWebQuiz.Backend.models.Turma;
 public class TurmaMapper {
 
   public Turma toEntity(TurmaDto turmaDto) {
-    Turma objeto = new Turma(turmaDto.nome_turma(), turmaDto.id_professor());
+    Turma objeto = new Turma(turmaDto.nomeTurma(), turmaDto.idProfessor());
     return objeto;
   }
 }

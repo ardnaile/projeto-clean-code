@@ -52,7 +52,7 @@ public class ProfessorController {
     return ResponseEntity.ok(lista);
   }
 
-  @GetMapping("/buscaNomeProfessor/{id_professor}")
+  @GetMapping("/buscaNomeProfessor/{idProfessor}")
   public ResponseEntity<List<Professor>> buscaNomeProfessor(@PathVariable String id_professor) {
     List nomeProfessor = professorService.buscaNomeProfessor(id_professor);
     if (nomeProfessor != null) {
