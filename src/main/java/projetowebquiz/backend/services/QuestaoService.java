@@ -27,9 +27,9 @@ public class QuestaoService {
 
   private final Random random = new Random();
 
-  public QuestaoQuatroDto pegarQuestaoQuatro(int id_categoria) {
+  public QuestaoQuatroDto pegarQuestaoQuatro(int idCategoria) {
     // Pegando uma lista com todas as questões do banco e embaralhando
-    List<QuestaoQuatro> questoesQuatro = questaoQuatroRepository.findByIdCategoria(id_categoria);
+    List<QuestaoQuatro> questoesQuatro = questaoQuatroRepository.findByIdCategoria(idCategoria);
     Collections.shuffle(questoesQuatro);
 
     // Pegando a primeira da lista e transformando em dto
