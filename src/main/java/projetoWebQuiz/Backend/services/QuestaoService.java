@@ -48,7 +48,7 @@ public class QuestaoService {
     List<QuestaoDuas> questoesDuas = questaoDuasRepository.findByIdCategoria(id_categoria);
     Collections.shuffle(questoesDuas);
 
-    QuestaoDuasDto questaoDuasDto = questaoDuasMapper.toDTO(questoesDuas.get(0));
+    QuestaoDuasDto questaoDuasDto = questaoDuasMapper.toDto(questoesDuas.get(0));
     return questaoDuasDto;
   }
 
