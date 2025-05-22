@@ -3,7 +3,7 @@ package projetoWebQuiz.Backend.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "questoes_duas")
+@Document(collection = "questoesDuas")
 public class QuestaoDuas {
   @Id private String idQuestaoDuas;
 
