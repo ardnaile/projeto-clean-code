@@ -13,14 +13,14 @@ import projetowebquiz.backend.models.Turma;
 import projetowebquiz.backend.services.ProfessorService;
 
 @RestController
-@RequestMapping("/professor")
+@RequestMapping("/professores")
 public class ProfessorController {
 
   @Autowired private ProfessorMapper professorMapper;
 
   @Autowired private ProfessorService professorService;
 
-  @PostMapping("/cadastroProfessor")
+  @PostMapping
   public ResponseEntity<String> cadastrarProfessor(@RequestBody ProfessorDto professorDto) {
     try {
       Professor professor = professorMapper.toEntity(professorDto);
@@ -38,21 +38,21 @@ public class ProfessorController {
     }
   }
 
-  @GetMapping("/verTodosProfessores")
+  @GetMapping
   public ResponseEntity<List<Professor>> verTodosProfessores() {
     List<Professor> lista = professorService.verTodosProfessores();
     return ResponseEntity.ok(lista);
   }
 
-  @GetMapping("/minhasTurmas/{idProfessor}")
-  public ResponseEntity<List<Turma>> minhasTurmas(@PathVariable String idProfessor) {
-    List<Turma> lista = professorService.buscarTurmasPorProfessor(idProfessor);
+  @GetMapping("/{id}/turmas")
+  public ResponseEntity<List<Turma>> minhasTurmas(@PathVariable String id) {
+    List<Turma> lista = professorService.buscarTurmasPorProfessor(id);
     return ResponseEntity.ok(lista);
   }
 
-  @GetMapping("/buscaNomeProfessor/{idProfessor}")
-  public ResponseEntity<List<Professor>> buscaNomeProfessor(@PathVariable String idProfessor) {
-    List nomeProfessor = professorService.buscaNomeProfessor(idProfessor);
+  @GetMapping("/{id}/nome")
+  public ResponseEntity<List<Professor>> buscaNomeProfessor(@PathVariable String id) {
+    List nomeProfessor = professorService.buscaNomeProfessor(id);
     if (nomeProfessor != null) {
       return ResponseEntity.ok(nomeProfessor);
     } else {
@@ -60,7 +60,7 @@ public class ProfessorController {
     }
   }
 
-  @PostMapping("/validarProfessor")
+  @PostMapping("/validar")
   public ResponseEntity<String> validarProfessor(@RequestBody ProfessorDto professorDto) {
     try {
       String professorId =
