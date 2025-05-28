@@ -105,7 +105,48 @@ Mais informações conforme andamento do projeto!
 ---
 
 ## Interfaces fluentes
-Mais informações conforme andamento do projeto!
+O padrão de interfaces fluentes é útil em projetos que seguem Clean Code pois permite encadear chamadas de métodos em linguagem natural, o que facilita a criação de objetos complexos. Neste projeto, foram identificadas algumas possibilidades para o uso de interfaces fluentes. Uma delas é o EstudanteDTO, que a princípio era estruturado assim:
+```
+public class EstudanteDto {
+    private String nome;
+    private String email;
+
+    // Getters e setters
+    public String getNome() { return nome; }
+    public void setNome(String nome) { this.nome = nome; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+}
+
+```
+Com interfaces fluentes:
+```
+public class EstudanteDto {
+    private String nome;
+    private String email;
+
+    public EstudanteDto comNome(String nome) {
+        this.nome = nome;
+        return this;
+    }
+
+    public EstudanteDto comEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public String getNome() { return nome; }
+    public String getEmail() { return email; }
+}
+
+```
+Uso:
+```
+EstudanteDto estudante = new EstudanteDto()
+    .comNome("Ana")
+    .comEmail("ana@email.com");
+```
 
 ---
 
