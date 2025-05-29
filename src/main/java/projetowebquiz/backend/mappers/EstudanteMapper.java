@@ -9,7 +9,9 @@ public class EstudanteMapper implements UsuarioMapper<Estudante, EstudanteDto> {
 
   @Override
   public Estudante toEntity(EstudanteDto estudanteDto) {
-    return new Estudante(
-        estudanteDto.usuario(), estudanteDto.senha(), estudanteDto.turma());
+    return new Estudante()
+            .comUsuario(estudanteDto.usuario())
+            .comSenha(estudanteDto.senha())
+            .comTurma(estudanteDto.turma());
   }
 }

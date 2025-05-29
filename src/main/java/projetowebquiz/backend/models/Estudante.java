@@ -1,10 +1,9 @@
 package projetowebquiz.backend.models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
-import projetowebquiz.backend.services.EstudanteService;
 
 @Document(collection = "estudantes")
-public class Estudante extends Usuario {
+public class Estudante extends Usuario<Estudante> {
   private String turma;
 
   public Estudante() {}
@@ -22,4 +21,10 @@ public class Estudante extends Usuario {
   public void setTurma(String turma) {
     this.turma = turma;
   }
+
+  public Estudante comTurma(String turma){
+    this.turma = turma;
+    return this;
+  }
+
 }

@@ -9,6 +9,8 @@ public class ProfessorMapper implements UsuarioMapper<Professor, ProfessorDto> {
 
   @Override
   public Professor toEntity(ProfessorDto professorDto) {
-    return new Professor(professorDto.usuario(), professorDto.senha());
+    return new Professor()
+            .comUsuario(professorDto.usuario())
+            .comSenha(professorDto.senha());
   }
 }

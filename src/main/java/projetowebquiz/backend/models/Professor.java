@@ -3,7 +3,7 @@ package projetowebquiz.backend.models;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "professores")
-public class Professor extends Usuario {
+public class Professor extends Usuario<Professor> {
 
   public Professor() {}
 
