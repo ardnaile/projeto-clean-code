@@ -5,11 +5,10 @@ import projetowebquiz.backend.dtos.ProfessorDto;
 import projetowebquiz.backend.models.Professor;
 
 @Component
-public class ProfessorMapper {
+public class ProfessorMapper implements UsuarioMapper<Professor, ProfessorDto>{
 
+  @Override
   public Professor toEntity(ProfessorDto professorDto) {
-    Professor objeto =
-        new Professor(professorDto.usuarioProfessor(), professorDto.chaveProfessor());
-    return objeto;
+      return new Professor(professorDto.usuarioProfessor(), professorDto.chaveProfessor());
   }
 }

@@ -1,36 +1,16 @@
 package projetowebquiz.backend.models;
 
 import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import projetowebquiz.backend.interfaces.Usuario;
 
 @Document(collection = "estudantes")
-public class Estudante implements Usuario {
-  private ObjectId idEstudante;
-  private String usuarioEstudante;
-  private String senhaEstudante;
+public class Estudante extends Usuario{
   private String turma;
 
-  public Estudante(String usuarioEstudante, String senhaEstudante, String turma) {
-      this.usuarioEstudante = usuarioEstudante;
-      this.senhaEstudante = senhaEstudante;
+  public Estudante(String usuario, String senha, String turma) {
+      this.usuario = usuario;
+      this.senha = senha;
       this.turma = turma;
-  }
-
-  @Override
-  public ObjectId getId(){
-    return idEstudante;
-  }
-
-  @Override
-  public String getUsuario(){
-    return usuarioEstudante;
-  }
-
-  @Override
-  public String getSenha(){
-    return senhaEstudante;
   }
 
   public String getTurma() {

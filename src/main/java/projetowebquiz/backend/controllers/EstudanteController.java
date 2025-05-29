@@ -1,15 +1,13 @@
 package projetowebquiz.backend.controllers;
 
 import java.util.List;
-import java.util.NoSuchElementException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import projetowebquiz.backend.dtos.EstudanteDto;
-import projetowebquiz.backend.mappers.EstudanteMapper;
 import projetowebquiz.backend.models.Estudante;
-import projetowebquiz.backend.repositories.TurmaRepository;
 import projetowebquiz.backend.services.EstudanteService;
 
 @RestController
@@ -18,20 +16,20 @@ public class EstudanteController {
   @Autowired EstudanteService estudanteService;
 
   @PostMapping
-  public ResponseEntity<String> cadastroEstudante(@RequestBody EstudanteDto estudanteDto) {
-    String id = estudanteService.cadastroEstudante(estudanteDto);
+  public ResponseEntity<String> cadastrarEstudante(@RequestBody EstudanteDto dto) {
+    String id = estudanteService.cadastrar(dto);
     return ResponseEntity.status(HttpStatus.CREATED).body(id);
   }
 
   @GetMapping
   public ResponseEntity<List<Estudante>> exibirEstudantes() {
-    List<Estudante> lista = estudanteService.exibirEstudantes();
-    return ResponseEntity.status(HttpStatus.OK).body(lista);
+    List<Estudante> lista = estudanteService.exibir();
+    return ResponseEntity.ok(lista);
   }
 
   @PostMapping("/validar")
-  public ResponseEntity<String> validarEstudante(@RequestParam String senha) {
-    String estudanteId = estudanteService.validarEstudante(senha);
-    return ResponseEntity.ok(estudanteId);
+  public ResponseEntity<String> validarEstudante(@RequestBody EstudanteDto dto) {
+    String id = estudanteService.validar(dto);
+    return ResponseEntity.ok(id);
   }
 }
