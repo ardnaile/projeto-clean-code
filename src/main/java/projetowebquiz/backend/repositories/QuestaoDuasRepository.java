@@ -1,12 +1,6 @@
 package projetowebquiz.backend.repositories;
 
-import java.util.List;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import projetowebquiz.backend.models.QuestaoDuas;
 
-public interface QuestaoDuasRepository extends MongoRepository<QuestaoDuas, String> {
-
-  @Query("{ 'idCategoria': ?0 }")
-  List<QuestaoDuas> findByIdCategoria(int idCategoria);
+public interface QuestaoDuasRepository extends QuestaoRepository<QuestaoDuas, Integer> {
 }

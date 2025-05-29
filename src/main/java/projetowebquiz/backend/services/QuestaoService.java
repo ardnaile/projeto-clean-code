@@ -1,14 +1,13 @@
 package projetowebquiz.backend.services;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetowebquiz.backend.dtos.QuestaoDuasDto;
 import projetowebquiz.backend.dtos.QuestaoQuatroDto;
-import projetowebquiz.backend.mappers.QuestaoDuasMapper;
-import projetowebquiz.backend.mappers.QuestaoQuatroMapper;
+import projetowebquiz.backend.mappers.QuestaoMapper;
+import projetowebquiz.backend.models.Questao;
 import projetowebquiz.backend.models.QuestaoDuas;
 import projetowebquiz.backend.models.QuestaoQuatro;
 import projetowebquiz.backend.repositories.QuestaoDuasRepository;
@@ -18,45 +17,56 @@ import projetowebquiz.backend.repositories.QuestaoQuatroRepository;
 public class QuestaoService {
 
   @Autowired private QuestaoQuatroRepository questaoQuatroRepository;
-
-  @Autowired private QuestaoQuatroMapper questaoQuatroMapper;
-
   @Autowired private QuestaoDuasRepository questaoDuasRepository;
-
-  @Autowired private QuestaoDuasMapper questaoDuasMapper;
+  @Autowired private QuestaoMapper questaoMapper;
 
   private final Random random = new Random();
 
-  public QuestaoQuatroDto pegarQuestaoQuatro(int idCategoria) {
-    // Pegando uma lista com todas as questões do banco e embaralhando
-    List<QuestaoQuatro> questoesQuatro = questaoQuatroRepository.findByIdCategoria(idCategoria);
-    Collections.shuffle(questoesQuatro);
+  public QuestaoQuatroDto selecionarQuestaoQuatro(int idCategoria) {
+    List<QuestaoQuatro> listaQuestoes = questaoQuatroRepository.findByIdCategoria(idCategoria);
 
-    // Pegando a primeira da lista e transformando em dto
-    QuestaoQuatroDto questaoQuatroDto = questaoQuatroMapper.toDto(questoesQuatro.get(0));
-
-    // Setando os valores das outras opções (opções erradas)
-    questaoQuatroDto.setOpcao2(questoesQuatro.get(1).getResposta());
-    questaoQuatroDto.setOpcao3(questoesQuatro.get(2).getResposta());
-    questaoQuatroDto.setOpcao4(questoesQuatro.get(3).getResposta());
-
-    // retornando o json com todas as infos necessárias
-    return questaoQuatroDto;
-  }
-
-  public QuestaoDuasDto pegarQuestaoDuas(int idCategoria) {
-    List<QuestaoDuas> questoesDuas = questaoDuasRepository.findByIdCategoria(idCategoria);
-    Collections.shuffle(questoesDuas);
-
-    QuestaoDuasDto questaoDuasDto = questaoDuasMapper.toDto(questoesDuas.get(0));
-    return questaoDuasDto;
-  }
-
-  public Object pegarQuestaoAleatoria(int idCategoria) {
-    if (random.nextBoolean()) {
-      return pegarQuestaoQuatro(idCategoria);
-    } else {
-      return pegarQuestaoDuas(idCategoria);
+    if (listaQuestoes == null || listaQuestoes.isEmpty()) {
+      throw new NoSuchElementException("Nenhuma questão encontrada para a categoria " + idCategoria);
     }
+
+    Collections.shuffle(listaQuestoes);
+
+    QuestaoQuatro questao = listaQuestoes.get(0);
+    questao.setOpcao2(listaQuestoes.get(1).getResposta());
+    questao.setOpcao3(listaQuestoes.get(2).getResposta());
+    questao.setOpcao4(listaQuestoes.get(3).getResposta());
+
+    return questaoMapper.toDto(questao);
+  }
+
+  public QuestaoDuasDto selecionarQuestaoDuas(int idCategoria) {
+    List<QuestaoDuas> listaQuestoes = questaoDuasRepository.findByIdCategoria(idCategoria);
+
+    if (listaQuestoes == null || listaQuestoes.isEmpty()) {
+      throw new NoSuchElementException("Nenhuma questão encontrada para a categoria " + idCategoria);
+    }
+
+    Collections.shuffle(listaQuestoes);
+
+    return questaoMapper.toDto(listaQuestoes.get(0));
+  }
+
+  public Object selecionarQuestaoAleatoria(int idCategoria) {
+    if (random.nextBoolean()) {
+      return selecionarQuestaoQuatro(idCategoria);
+    } else {
+      return selecionarQuestaoDuas(idCategoria);
+    }
+  }
+
+  public List<Questao<?>> listarTodasQuestoes(){
+    List<QuestaoDuas> questoesDuas = questaoDuasRepository.findAll();
+    List<QuestaoQuatro> questoesQuatro = questaoQuatroRepository.findAll();
+
+    List<Questao<?>> todasQuestoes = new ArrayList<>();
+    todasQuestoes.addAll(questoesDuas);
+    todasQuestoes.addAll(questoesQuatro);
+
+    return todasQuestoes;
   }
 }

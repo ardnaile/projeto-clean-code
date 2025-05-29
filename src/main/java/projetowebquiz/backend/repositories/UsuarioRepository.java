@@ -1,13 +1,14 @@
 package projetowebquiz.backend.repositories;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
-import projetowebquiz.backend.models.Professor;
+import org.springframework.data.repository.NoRepositoryBean;
 import projetowebquiz.backend.models.Usuario;
-
 import java.util.Optional;
 
-public interface UsuarioRepository<T extends Usuario> extends MongoRepository<T, String> {
+@NoRepositoryBean
+public interface UsuarioRepository<T extends Usuario> extends MongoRepository<T, ObjectId> {
     @Query("{ 'usuario': ?0 }")
     Optional<T> findByUsuario(String usuario);
 

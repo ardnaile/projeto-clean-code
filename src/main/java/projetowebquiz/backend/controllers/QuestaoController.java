@@ -2,7 +2,6 @@ package projetowebquiz.backend.controllers;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import projetowebquiz.backend.dtos.QuestaoDuasDto;
 import projetowebquiz.backend.dtos.QuestaoQuatroDto;
+import projetowebquiz.backend.models.Questao;
 import projetowebquiz.backend.models.QuestaoDuas;
 import projetowebquiz.backend.repositories.QuestaoDuasRepository;
 import projetowebquiz.backend.services.QuestaoService;
@@ -17,52 +17,29 @@ import projetowebquiz.backend.services.QuestaoService;
 @RestController
 @RequestMapping("/questoes")
 public class QuestaoController {
-  @Autowired private QuestaoDuasRepository questaoDuasRepository;
-
-  @Autowired private QuestaoService questaoService;
+  @Autowired QuestaoService questaoService;
 
   @GetMapping("/quatro/{idCategoria}")
-  public ResponseEntity<QuestaoQuatroDto> pegarQuestaoQuatro(@PathVariable int idCategoria) {
-    try {
-      QuestaoQuatroDto questaoQuatroDto = questaoService.pegarQuestaoQuatro(idCategoria);
-      if (questaoQuatroDto != null) {
-        return ResponseEntity.ok(questaoQuatroDto);
-      } else {
-        return ResponseEntity.notFound().build();
-      }
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-    }
+  public ResponseEntity<QuestaoQuatroDto> selecionarQuestaoQuatro(@PathVariable int idCategoria) {
+    QuestaoQuatroDto questao = questaoService.selecionarQuestaoQuatro(idCategoria);
+    return ResponseEntity.ok(questao);
   }
 
   @GetMapping("/duas/{idCategoria}")
-  public ResponseEntity<QuestaoDuasDto> pegarQuestaoDuas(@PathVariable int idCategoria) {
-    try {
-      QuestaoDuasDto questaoDuasDto = questaoService.pegarQuestaoDuas(idCategoria);
-      if (questaoDuasDto != null) {
-        return ResponseEntity.ok(questaoDuasDto);
-      } else {
-        return ResponseEntity.notFound().build();
-      }
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-    }
-  }
-
-  @GetMapping("/duas")
-  public ResponseEntity<List<QuestaoDuas>> questoesDuas() {
-    List<QuestaoDuas> lista = questaoDuasRepository.findAll();
-    return ResponseEntity.ok(lista);
+  public ResponseEntity<QuestaoDuasDto> selecionarQuestaoDuas(@PathVariable int idCategoria) {
+    QuestaoDuasDto questao = questaoService.selecionarQuestaoDuas(idCategoria);
+    return ResponseEntity.ok(questao);
   }
 
   @GetMapping("/aleatoria/{idCategoria}")
-  public ResponseEntity<Object> pegarQuestaoAleatoria(@PathVariable int idCategoria) {
-    try {
-      Object questao = questaoService.pegarQuestaoAleatoria(idCategoria);
-      return ResponseEntity.ok(questao);
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body("Ocorreu um erro ao buscar a questão.");
-    }
+  public ResponseEntity<Object> selecionarQuestaoAleatoria(@PathVariable int idCategoria) {
+    Object questao = questaoService.selecionarQuestaoAleatoria(idCategoria);
+    return ResponseEntity.ok(questao);
+  }
+
+  @GetMapping
+  public ResponseEntity<List<Questao<?>>> listarTodasQuestoes() {
+    List<Questao<?>> lista = questaoService.listarTodasQuestoes();
+    return ResponseEntity.ok(lista);
   }
 }
