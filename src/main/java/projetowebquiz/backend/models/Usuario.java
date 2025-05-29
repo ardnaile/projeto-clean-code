@@ -19,11 +19,13 @@ public abstract class Usuario <T extends Usuario<T>> {
     return senha;
   }
 
+  @SuppressWarnings("unchecked")
   public T comUsuario(String usuario){
     this.usuario = usuario;
     return (T) this;
   }
 
+  @SuppressWarnings("unchecked")
   public T comSenha(String senha){
     this.senha = senha;
     return (T) this;

@@ -110,7 +110,7 @@ public class UsuarioServiceTest {
         public String getSenha() { return senha; }
     }
 
-    static class Usuario extends projetowebquiz.backend.models.Usuario {
+    static class Usuario extends projetowebquiz.backend.models.Usuario<Usuario> {
         private String id;
         private String usuario;
         private String senha;
