@@ -4,8 +4,7 @@ import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 public abstract class Usuario {
-    @MongoId
-    ObjectId id;
+    @MongoId ObjectId id;
     String usuario;
     String senha;
 
