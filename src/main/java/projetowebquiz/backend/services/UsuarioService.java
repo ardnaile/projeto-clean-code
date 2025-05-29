@@ -7,7 +7,7 @@ import projetowebquiz.backend.mappers.UsuarioMapper;
 import projetowebquiz.backend.models.Usuario;
 import projetowebquiz.backend.repositories.UsuarioRepository;
 
-public abstract class UsuarioService<T extends Usuario, D> {
+public abstract class UsuarioService<T extends Usuario<T>, D> {
   protected UsuarioRepository<T> repository;
   protected UsuarioMapper<T, D> mapper;
 
@@ -24,7 +24,7 @@ public abstract class UsuarioService<T extends Usuario, D> {
       throw new IllegalArgumentException("Esse nome de usuário já existe.");
     }
     repository.save(usuario);
-    return usuario.getId().toString();
+    return usuario.getId();
   }
 
   public List<T> exibir() {
