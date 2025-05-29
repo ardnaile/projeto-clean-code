@@ -18,16 +18,9 @@ public class TurmaController {
   @Autowired TurmaService turmaService;
 
   @PostMapping
-  public ResponseEntity<String> novaTurma(@RequestBody TurmaDto turmaDto) {
-    try {
-      Turma turma = turmaMapper.toEntity(turmaDto);
-      Turma novaTurma = turmaService.salvarTurma(turma);
-
-      return ResponseEntity.ok("Turma cadastrada com sucesso. ID: " + novaTurma.getIdTurma());
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body("Erro ao cadastrar turma: " + e.getMessage());
-    }
+  public ResponseEntity<String> criarTurma(@RequestBody TurmaDto turmaDto) {
+    String id = turmaService.criarTurma(turmaDto);
+    return ResponseEntity.ok("Turma cadastrada com sucesso. ID: " + id);
   }
 
   @GetMapping

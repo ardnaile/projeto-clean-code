@@ -1,12 +1,13 @@
 package projetowebquiz.backend.models;
 
-import org.springframework.data.annotation.Id;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Document(collection = "turmas")
 public class Turma {
 
-  @Id private String idTurma;
+  @MongoId private ObjectId idTurma;
   private String nomeTurma;
   private String idProfessor;
 
@@ -15,11 +16,11 @@ public class Turma {
     this.idProfessor = idProfessor;
   }
 
-  public String getIdTurma() {
+  public ObjectId getIdTurma() {
     return idTurma;
   }
 
-  public void setIdTurma(String idTurma) {
+  public void setIdTurma(ObjectId idTurma) {
     this.idTurma = idTurma;
   }
 
