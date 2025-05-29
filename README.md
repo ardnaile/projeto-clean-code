@@ -4,7 +4,7 @@ O trabalho consise em refatorar um projeto já desenvolvido anteriormente na gra
 
 ## 📚 Sobre o projeto escolhido
 
-O código escolhido para refatoração foi o back-end do projeto [Aprende No Game](https://github.com/ardnaile/projeto-integrador-web), um sistema web de quiz para crianças. Ele foi desenvolvido em Java com o framework Spring, estruturado como uma API RESTful.
+O código escolhido para refatoração foi o back-end do projeto [Aprende No Game](https://github.com/ardnaile/projeto-integrador-web), um sistema web de quiz para crianças. Ele foi desenvolvido em Java com o framework Spring, estruturado como uma API RESTful. Os arquivos do projeto antes da refatoração estão na branch `original`.
 
 
 ## ⚙️ Instalação e execução
