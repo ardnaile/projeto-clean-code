@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af50"
+  },
+  "id_materia": 1,
+  "nome_materia": "Matemática"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af51"
+  },
+  "id_materia": 2,
+  "nome_materia": "Tecnologia"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af52"
+  },
+  "id_materia": 3,
+  "nome_materia": "Idiomas"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af53"
+  },
+  "id_materia": 4,
+  "nome_materia": "Animais"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af54"
+  },
+  "id_materia": 5,
+  "nome_materia": "Comidas"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af55"
+  },
+  "id_materia": 6,
+  "nome_materia": "Natureza"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af56"
+  },
+  "id_materia": 7,
+  "nome_materia": "Artes"
+},
+{
+  "_id": {
+    "$oid": "68388f776071f5d77ed4af57"
+  },
+  "id_materia": 8,
+  "nome_materia": "Esportes"
+}]

@@ -1,0 +1,6 @@
+[{
+  "_id": "68389ba815c66366478007fe",
+  "nomeTurma": "Turma1",
+  "idProfessor": "68389851940b3b3c7875b163",
+  "_class": "projetowebquiz.backend.models.Turma"
+}]

@@ -1,0 +1,12 @@
+[{
+  "_id": "68389851940b3b3c7875b163",
+  "usuario": "Teste",
+  "senha": "12345678",
+  "_class": "projetowebquiz.backend.models.Professor"
+},
+{
+  "_id": "68389b4815c66366478007fd",
+  "usuario": "Teste2",
+  "senha": "12345678",
+  "_class": "projetowebquiz.backend.models.Professor"
+}]

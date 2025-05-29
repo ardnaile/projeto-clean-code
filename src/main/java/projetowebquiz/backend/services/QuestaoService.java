@@ -2,6 +2,7 @@ package projetowebquiz.backend.services;
 
 import java.util.*;
 
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import projetowebquiz.backend.dtos.QuestaoDuasDto;
@@ -26,7 +27,8 @@ public class QuestaoService {
     List<QuestaoQuatro> listaQuestoes = questaoQuatroRepository.findByIdCategoria(idCategoria);
 
     if (listaQuestoes == null || listaQuestoes.isEmpty()) {
-      throw new NoSuchElementException("Nenhuma questão encontrada para a categoria " + idCategoria);
+      throw new NoSuchElementException(
+          "Nenhuma questão encontrada para a categoria " + idCategoria);
     }
 
     Collections.shuffle(listaQuestoes);
@@ -43,7 +45,8 @@ public class QuestaoService {
     List<QuestaoDuas> listaQuestoes = questaoDuasRepository.findByIdCategoria(idCategoria);
 
     if (listaQuestoes == null || listaQuestoes.isEmpty()) {
-      throw new NoSuchElementException("Nenhuma questão encontrada para a categoria " + idCategoria);
+      throw new NoSuchElementException(
+          "Nenhuma questão encontrada para a categoria " + idCategoria);
     }
 
     Collections.shuffle(listaQuestoes);
@@ -59,7 +62,7 @@ public class QuestaoService {
     }
   }
 
-  public List<Questao<?>> listarTodasQuestoes(){
+  public List<Questao<?>> listarTodasQuestoes() {
     List<QuestaoDuas> questoesDuas = questaoDuasRepository.findAll();
     List<QuestaoQuatro> questoesQuatro = questaoQuatroRepository.findAll();
 

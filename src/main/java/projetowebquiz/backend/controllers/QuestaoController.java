@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import projetowebquiz.backend.dtos.QuestaoDuasDto;
 import projetowebquiz.backend.dtos.QuestaoQuatroDto;
 import projetowebquiz.backend.models.Questao;
-import projetowebquiz.backend.models.QuestaoDuas;
-import projetowebquiz.backend.repositories.QuestaoDuasRepository;
 import projetowebquiz.backend.services.QuestaoService;
 
 @RestController

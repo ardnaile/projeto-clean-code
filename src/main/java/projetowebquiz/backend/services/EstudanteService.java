@@ -7,8 +7,8 @@ import projetowebquiz.backend.models.Estudante;
 import projetowebquiz.backend.repositories.EstudanteRepository;
 
 @Service
-public class EstudanteService extends UsuarioService<Estudante, EstudanteDto>{
-  public EstudanteService(EstudanteRepository repository, EstudanteMapper mapper){
+public class EstudanteService extends UsuarioService<Estudante, EstudanteDto> {
+  public EstudanteService(EstudanteRepository repository, EstudanteMapper mapper) {
     super(repository, mapper);
   }
 }

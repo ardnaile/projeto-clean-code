@@ -1,0 +1,7 @@
+[{
+  "_id": "68389bd815c66366478007ff",
+  "turma": "Turma1",
+  "usuario": "Estudante1",
+  "senha": "12345678",
+  "_class": "projetowebquiz.backend.models.Estudante"
+}]

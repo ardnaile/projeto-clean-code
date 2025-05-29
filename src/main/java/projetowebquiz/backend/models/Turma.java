@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 @Document(collection = "turmas")
 public class Turma {
 
-  @MongoId private ObjectId idTurma;
+  @MongoId private String idTurma;
   private String nomeTurma;
   private String idProfessor;
 
@@ -16,11 +16,11 @@ public class Turma {
     this.idProfessor = idProfessor;
   }
 
-  public ObjectId getIdTurma() {
+  public String getIdTurma() {
     return idTurma;
   }
 
-  public void setIdTurma(ObjectId idTurma) {
+  public void setIdTurma(String idTurma) {
     this.idTurma = idTurma;
   }
 
